@@ -5,10 +5,10 @@ of the CS2010 and CS simple computers used in various courses of the
 Electronics Technology Department (Universidad de Sevilla), developed by
 professors and students of the Department along the years.
 
-> [!NOTE]  
-> This is an attempt at refactoring the original code from the Electronics Technology Department (Universidad de Sevilla). Stages will be added as they get modified. Internal system may change. Original code can be found at [jjchico-edc/yasac-public](https://gitlab.com/jjchico-edc/yasac-public)
-
 (This is work in progress and, probably, it will always be.)
+
+> [!NOTE]  
+> This is a small project to learn Verilog and Assembly, and an attempt at refactoring the original code from the Electronics Technology Department (Universidad de Sevilla). Stages will be added as they get modified. Internal system may change. Original code can be found at [jjchico-edc/yasac-public](https://gitlab.com/jjchico-edc/yasac-public)
 
 ### Introduction
 
