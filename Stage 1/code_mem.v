@@ -18,6 +18,7 @@
 
 module code_mem (
   input wire [7:0] address, // IN: Instruction Address
+
   output wire [15:0] data   // OUT: Instruction Data
 );
 
@@ -37,12 +38,6 @@ module code_mem (
     // data_out = 2 * data_in - 5
     // Example: data_in = 6, data_out = 7
 
-    code['h0] = {`MOV, `R1, 5'd0, `R7};     // Instruction Format A
-    code['h1] = {`MOV, `R0, 5'd0, `R1};
-    code['h2] = {`ADD, `R0, 5'd0, `R1};
-    code['h3] = {`LDI, `R2, 8'h05};         // Instruction Format B
-    code['h4] = {`SUB, `R0, 5'd0, `R2};
-    code['h5] = {`MOV, `R6, 5'd0, `R0};
-    code['h6] = {`STOP, 11'd0};
+    `include "code/simple.code"
   end
 endmodule

@@ -15,6 +15,7 @@ module alu #(
   input wire [7:0] data_a,        // IN: Data A
   input wire [7:0] data_b,        // IN: Data B
   input wire [1:0] operation,     // IN: ALU Operation Code
+
   output reg [7:0] data_r         // OUT: Data Result
 );
 
