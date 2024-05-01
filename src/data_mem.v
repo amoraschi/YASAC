@@ -100,7 +100,7 @@ module data_mem (
   // OUT Write
   always @(posedge CLK)
     if (WRITE_MEM && ADDRESS >= 8'hf0 && ADDRESS < 8'hf8)
-      case(ADDRESS[3:0])
+      case (ADDRESS[3:0])
         4'h0: PORT_REG00 <= DATA_IN;
         4'h1: PORT_REG01 <= DATA_IN;
         4'h2: PORT_REG02 <= DATA_IN;
@@ -135,7 +135,7 @@ module data_mem (
 
   // Async Read
   always @(*)
-    case(ADDRESS[3:0])
+    case (ADDRESS[3:0])
       4'h0: PORT_OUT = PORT_REG00;
       4'h1: PORT_OUT = PORT_REG01;
       4'h2: PORT_OUT = PORT_REG02;

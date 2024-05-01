@@ -25,21 +25,24 @@ module code_mem (
 );
 
   // Would put in uppercase, but breaking
-  reg [15:0] code[0:255];
+  reg [15:0] CODE[0:255];
   integer I;
 
-  assign DATA = code[ADDRESS];
+  assign DATA = CODE[ADDRESS];
 
   initial begin
     // Xilinx ISE synthesis needs all the positions to be initialized
     for (I = 0; I < 256; I = I + 1)
-      code[I] = 16'h0000;
+      CODE[I] = 16'h0000;
 
     // Code Memory
-    //`include "src/code/branch_test.code"
+    // `include "src/code/branch_test.code"
     // `include "src/code/fibonacci.code"
-    //`include "src/code/logic_test.code"
-    //`include "src/code/shift_cl_se_test.code"
-    `include "src/code/stack_test.code"
+    // `include "src/code/logic_test.code"
+    // `include "src/code/shift_cl_se_test.code"
+    // `include "src/code/stack_test.code"
+    // `include "src/code/displacement_test.code"
+    // `include "src/code/register_call_test.code"
+    // `include "src/code/register_jmp_test.code"
   end
 endmodule

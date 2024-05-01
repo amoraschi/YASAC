@@ -1,0 +1,5 @@
+CODE['h00] = {`LDS, `R0, 8'hf8};
+CODE['h01] = {`ICALL, `R0, 8'h00};
+CODE['h02] = {`STOP, 11'h00};
+CODE['h5a] = {`STS, `R0, 8'hf2};
+CODE['h5b] = {`RET, 11'h00};

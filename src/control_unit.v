@@ -30,6 +30,7 @@ module control_unit (
   output reg WRITE_INSTREG,           // OUT: Write Instruction Register
   output reg WRITE_REGS,              // OUT: Write Register Array
   output reg USE_IMMEDIATE,           // OUT: Use Immediate Value
+  output reg USE_DISPLACEMENT,        // OUT: Use Displacement Value
   output reg WRITE_MEM,               // OUT: Write Data Memory
   output reg READ_MEM,                // OUT: Read Data Memory
   output reg WRITE_MEMADDR,           // OUT: Write Memory Address Register
@@ -84,25 +85,27 @@ module control_unit (
             `STOP:
               NEXT_STATE = READY;
             `LDI, `MOV, `ADD, `SUB, `JMP, `BRBS, `BRBC,
-            `AND, `OR, `EOR, `ROR, `ROL, `BCLR, `BSET:
+            `AND, `OR, `EOR, `ROR, `ROL, `BCLR, `BSET,
+            `IJMP:
               NEXT_STATE = FETCH;
-            `LD, `ST, `LDS, `STS, `PUSH, `POP, `CALL, `RET:
+            `LDS, `STS, `PUSH, `POP, `CALL, `RET, `LDD,
+            `STD, `ICALL:
               NEXT_STATE = EXEC2;
             default:
               NEXT_STATE = 'bx;
           endcase
         EXEC2:
           case (OPCODE)
-            `LD, `ST, `LDS, `STS, `PUSH:
+            `LDS, `STS, `PUSH, `LDD, `STD:
               NEXT_STATE = FETCH;
-            `POP, `CALL, `RET:
+            `POP, `CALL, `RET, `ICALL:
               NEXT_STATE = EXEC3;
             default:
               NEXT_STATE = 'bx;
           endcase
         EXEC3:
           case (OPCODE)
-            `POP, `CALL, `RET:
+            `POP, `CALL, `RET, `ICALL:
               NEXT_STATE = FETCH;
             default:
               NEXT_STATE = 'bx;
@@ -117,7 +120,7 @@ module control_unit (
       // Default
       RDY = 1'b0; ALU_OPERATION = 'b0;
       INC_PROGCOUNT = 1'b0; CLR_PROGCOUNT = 1'b0; WRITE_PROGCOUNT = 1'b0; READ_PROGCOUNT = 1'b0;
-      WRITE_INSTREG = 1'b0; WRITE_REGS = 1'b0; USE_IMMEDIATE = 1'b0;
+      WRITE_INSTREG = 1'b0; WRITE_REGS = 1'b0; USE_IMMEDIATE = 1'b0; USE_DISPLACEMENT = 1'b0;
       WRITE_MEM = 1'b0; READ_MEM = 1'b0; WRITE_MEMADDR = 1'b0;
       WRITE_STATREG = 1'b0; CLR_STATBIT = 1'b0; SET_STATBIT = 1'b0;
       PRESET_STACKPTR = 1'b0; INC_STACKPTR = 1'b0; DEC_STACKPTR = 1'b0; READ_STACKPTR = 1'b0;
@@ -156,7 +159,7 @@ module control_unit (
               ALU_OPERATION = `ALU_TRB;
               WRITE_REGS = 1'b1;
             end
-            `LD, `ST, `LDS, `STS: begin
+            `LDS, `STS: begin
               ALU_OPERATION = `ALU_TRB;
               WRITE_MEMADDR = 1'b1;
               if (OPCODE == `LDS || OPCODE == `STS)
@@ -215,14 +218,28 @@ module control_unit (
             end
             `POP, `RET:
               INC_STACKPTR = 1'b1;
+            `LDD, `STD: begin
+              ALU_OPERATION = `ALU_ADD;
+              USE_DISPLACEMENT = 1'b1;
+              WRITE_MEMADDR = 1'b1;
+            end
+            `IJMP: begin
+              ALU_OPERATION = `ALU_TRA;
+              WRITE_PROGCOUNT = 1'b1;
+            end
+            `ICALL: begin
+              READ_STACKPTR = 1'b1;
+              WRITE_MEMADDR = 1'b1;
+              DEC_STACKPTR = 1'b1;
+            end
           endcase
       EXEC2:
         case (OPCODE)
-          `LD, `LDS: begin
+          `LDS, `LDD: begin
             READ_MEM = 1'b1;
             WRITE_REGS = 1'b1;
           end
-          `ST, `STS, `PUSH: begin
+          `STS, `PUSH, `STD: begin
             ALU_OPERATION = `ALU_TRA;
             WRITE_MEM = 1'b1;
           end
@@ -231,6 +248,10 @@ module control_unit (
             WRITE_MEMADDR = 1'b1;
           end
           `CALL: begin
+            READ_PROGCOUNT = 1'b1;
+            WRITE_MEM = 1'b1;
+          end
+          `ICALL: begin
             READ_PROGCOUNT = 1'b1;
             WRITE_MEM = 1'b1;
           end
@@ -248,6 +269,10 @@ module control_unit (
           end
           `RET: begin
             READ_MEM = 1'b1;
+            WRITE_PROGCOUNT = 1'b1;
+          end
+          `ICALL: begin
+            ALU_OPERATION = `ALU_TRA;
             WRITE_PROGCOUNT = 1'b1;
           end
         endcase

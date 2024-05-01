@@ -120,7 +120,7 @@ module test ();
 
     // Wait RDY
     wait (RDY)
-      $display("RDY - YES");
+      $display("Detected RDY - TRUE");
 
     repeat(3)
       @(posedge CLK)
@@ -133,7 +133,7 @@ module test ();
   // Force Stop 100 cycles
   initial begin
     #(20 * 1000);
-    $display("RDY - NO");
+    $display("Detected RDY - FALSE");
     $display("Simulation - FAIL");
     $finish;
   end

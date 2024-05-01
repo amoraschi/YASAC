@@ -13,8 +13,8 @@
 `define ADD     5'h03
 `define SUB     5'h04
 `define STOP    5'h05
-`define LD      5'h06
-`define ST      5'h07
+`define LDD     5'h06
+`define STD     5'h07
 `define LDS     5'h08
 `define STS     5'h09
 `define JMP     5'h0a
@@ -31,6 +31,8 @@
 `define POP     5'h15
 `define CALL    5'h16
 `define RET     5'h17
+`define IJMP    5'h18
+`define ICALL   5'h19
 
 // Registers
 `define R0      3'h0
@@ -76,6 +78,11 @@
 `define BRPL    {`BRBC, `NF}
 `define BRVC    {`BRBC, `VF}
 `define BRGE    {`BRBC, `SF}
+
+// Load/Store Pseudo-Instructions
+// Deprecated LD/ST - Use LDD/STD
+`define LD      {`LDD}
+`define ST      {`STD}
 
 // Last Memory Address before I/O Address Space
 `define RAMEND 8'hef

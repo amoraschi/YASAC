@@ -50,6 +50,7 @@ module yasac (
     WRITE_INSTREG,
     WRITE_REGS,
     USE_IMMEDIATE,
+    USE_DISPLACEMENT,
     WRITE_MEM,
     READ_MEM,
     WRITE_MEMADDR,
@@ -79,6 +80,7 @@ module yasac (
     .WRITE_INSTREG(WRITE_INSTREG),                    // OUT: Write Instruction Register
     .WRITE_REGS(WRITE_REGS),                          // OUT: Write Register Array
     .USE_IMMEDIATE(USE_IMMEDIATE),                    // OUT: Use Immediate Value
+    .USE_DISPLACEMENT(USE_DISPLACEMENT),              // OUT: Use Displacement Value
     .WRITE_MEM(WRITE_MEM),                            // OUT: Write Data Memory
     .READ_MEM(READ_MEM),                              // OUT: Read Data Memory
     .WRITE_MEMADDR(WRITE_MEMADDR),                    // OUT: Write Memory Address Register
@@ -103,6 +105,7 @@ module yasac (
     .WRITE_INSTREG(WRITE_INSTREG),                    // IN: Write Instruction Register
     .WRITE_REGS(WRITE_REGS),                          // IN: Write Register Array
     .USE_IMMEDIATE(USE_IMMEDIATE),                    // IN: Use Immediate Value
+    .USE_DISPLACEMENT(USE_DISPLACEMENT),              // IN: Use Displacement Value
     .WRITE_MEM(WRITE_MEM),                            // IN: Write Data Memory
     .READ_MEM(READ_MEM),                              // IN: Read Data Memory
     .WRITE_MEMADDR(WRITE_MEMADDR),                    // IN: Write Memory Address Register

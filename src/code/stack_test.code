@@ -23,16 +23,16 @@
 
 // Code memory contents (program)
 
-code['h00] = {`LDS,  `R0,  8'hf8};      //         lds r0, 0xf8
-code['h01] = {`LDI,  `R1,  8'hff};      //         ldi r1, 0xff
-code['h02] = {`PUSH, `R0,  8'h00};      //         push r0
-code['h03] = {`POP,  `R1,  8'h00};      //         pop r1
-code['h04] = {`CALL, 3'h0, 8'h09};      //         call send
-code['h05] = {`STOP, 11'd0      };      //         stop
-code['h06] = {`STOP, 11'd0      };      //         stop
-code['h07] = {`STOP, 11'd0      };      //         stop
-code['h08] = {`STOP, 11'd0      };      //         stop
-code['h09] = {`STS,  `R1,  8'hf1};      // send    sts 0xf1, r1
-code['h0a] = {`STS,  `R0,  8'hf2};      //         sts 0xf2, r0
-code['h0b] = {`RET,  11'd0      };      //         ret
-code['h0c] = {`STOP, 11'd0      };      //         stop
+CODE['h00] = {`LDS,  `R0,  8'hf8};      //         lds r0, 0xf8
+CODE['h01] = {`LDI,  `R1,  8'hff};      //         ldi r1, 0xff
+CODE['h02] = {`PUSH, `R0,  8'h00};      //         push r0
+CODE['h03] = {`POP,  `R1,  8'h00};      //         pop r1
+CODE['h04] = {`CALL, 3'h0, 8'h09};      //         call send
+CODE['h05] = {`STOP, 11'd0      };      //         stop
+CODE['h06] = {`STOP, 11'd0      };      //         stop
+CODE['h07] = {`STOP, 11'd0      };      //         stop
+CODE['h08] = {`STOP, 11'd0      };      //         stop
+CODE['h09] = {`STS,  `R1,  8'hf1};      // send    sts 0xf1, r1
+CODE['h0a] = {`STS,  `R0,  8'hf2};      //         sts 0xf2, r0
+CODE['h0b] = {`RET,  11'd0      };      //         ret
+CODE['h0c] = {`STOP, 11'd0      };      //         stop

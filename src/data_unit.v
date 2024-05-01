@@ -22,6 +22,7 @@ module data_unit (
   input wire WRITE_INSTREG,           // IN: Write Instruction Register
   input wire WRITE_REGS,              // IN: Write Register Array
   input wire USE_IMMEDIATE,           // IN: Use Immediate Value
+  input wire USE_DISPLACEMENT,        // IN: Use Displacement Value
   input wire WRITE_MEM,               // IN: Write Data Memory
   input wire READ_MEM,                // IN: Read Data Memory
   input wire WRITE_MEMADDR,           // IN: Write Memory Address Register
@@ -67,7 +68,9 @@ module data_unit (
   wire [15:0] INSTRUCTION;          // Code Memory Instruction
   wire [2:0] SEL_A, SEL_B;          // Register Selection
   wire [7:0] INM_VALUE;             // Immediate Value
+  wire [5:0] DISP_VALUE;            // Displacement Value
   wire [7:0] REG_A, REG_B;          // Register Array Outputs
+  wire [7:0] ALU_A;                 // ALU A Input
   wire [7:0] ALU_B;                 // ALU B Input
   wire [7:0] BUS;                   // Internal Bus
   wire [7:0] ALU_OUT;               // ALU Output
@@ -102,6 +105,7 @@ module data_unit (
   assign SEL_B = INSTREG[2:0];
   assign INM_VALUE = INSTREG[7:0];
   assign STATUS_SEL = INSTREG[10:8];
+  assign DISP_VALUE = INSTREG[7:3];
 
   // Register Array
   always @(posedge CLK)
@@ -148,10 +152,11 @@ module data_unit (
   );
 
   // ALU
+  assign ALU_A = USE_DISPLACEMENT ? {{3{DISP_VALUE[4]}}, DISP_VALUE} : REG_A;
   assign ALU_B = USE_IMMEDIATE ? INM_VALUE : REG_B;
 
   alu alu (
-    .DATA_A(REG_A),
+    .DATA_A(ALU_A),
     .DATA_B(ALU_B),
     .ALU_OPERATION(ALU_OPERATION),
     .ST_IN(STATREG),

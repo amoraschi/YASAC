@@ -41,20 +41,20 @@
 //         jmp  loop
 // finish: stop
 
-        code['h00] = {`LDI,  `R0, 8'h00};
-        code['h01] = {`LDS,  `R1, 8'hf8};
-        code['h02] = {`MOV,  `R2, 5'd0, `R1};
-        code['h03] = {`SUB,  `R2, 5'd0, `R0};
-        code['h04] = {`BRZS,      8'h10};
-        code['h05] = {`LDI,  `R2, 8'hff};
-        code['h06] = {`LDI,  `R3, 8'h01};
-        code['h07] = {`MOV,  `R4, 5'd0, `R2};           // LOOP
-        code['h08] = {`ADD,  `R4, 5'd0, `R3};
-        code['h09] = {`STS,  `R4, 8'hf1};
-        code['h0a] = {`LDI,  `R0, 8'h01};
-        code['h0b] = {`SUB,  `R1, 5'd0, `R0};
-        code['h0c] = {`BRZS,      8'h10};
-        code['h0d] = {`MOV,  `R2, 5'd0, `R3};
-        code['h0e] = {`MOV,  `R3, 5'd0, `R4};
-        code['h0f] = {`JMP,  3'h0, 8'h07};
-        code['h10] = {`STOP, 11'd0};                    // FINISH
+        CODE['h00] = {`LDI,  `R0, 8'h00};
+        CODE['h01] = {`LDS,  `R1, 8'hf8};
+        CODE['h02] = {`MOV,  `R2, 5'd0, `R1};
+        CODE['h03] = {`SUB,  `R2, 5'd0, `R0};
+        CODE['h04] = {`BRZS,      8'h10};
+        CODE['h05] = {`LDI,  `R2, 8'hff};
+        CODE['h06] = {`LDI,  `R3, 8'h01};
+        CODE['h07] = {`MOV,  `R4, 5'd0, `R2};           // LOOP
+        CODE['h08] = {`ADD,  `R4, 5'd0, `R3};
+        CODE['h09] = {`STS,  `R4, 8'hf1};
+        CODE['h0a] = {`LDI,  `R0, 8'h01};
+        CODE['h0b] = {`SUB,  `R1, 5'd0, `R0};
+        CODE['h0c] = {`BRZS,      8'h10};
+        CODE['h0d] = {`MOV,  `R2, 5'd0, `R3};
+        CODE['h0e] = {`MOV,  `R3, 5'd0, `R4};
+        CODE['h0f] = {`JMP,  3'h0, 8'h07};
+        CODE['h10] = {`STOP, 11'd0};                    // FINISH

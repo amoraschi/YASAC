@@ -69,7 +69,16 @@ Stack and subroutines.
 
 ### Stage 6
 
+Indirect addressing with displacement. (Exercise 19 - YASAC Assignment)
+
 * Moved testbench input port assignments to a different file
+* New instructions: LDD, STD
+
+### Stage 7
+
+Register addressing on subroutines. (EdC 2nd Partial Exam 2022-2023)
+
+* New instructions: IJMP, ICALL.
 
 ### YASAC core
 

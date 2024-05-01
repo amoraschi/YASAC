@@ -22,13 +22,13 @@
 
         // Code memory contents (program)
 
-        code['h00] = {`LDI,  `R1, 8'h0f};          // ldi r1, 0x0f
-        code['h01] = {`LDS,  `R0, 8'hf8};          // lds r0, 0xf8
-        code['h02] = {`AND,  `R0, 5'd0, `R1};      // and r0, r1
-        code['h03] = {`STS,  `R0, 8'hf1};          // sts 0xf1, r0
-        code['h04] = {`LDI,  `R2, 8'hc3};          // ldi r2, 0xc3
-        code['h05] = {`EOR,  `R1, 5'd0, `R2};      // eor r1, r2
-        code['h06] = {`LDS,  `R0, 8'hf8};          // lds r0, 0xf8
-        code['h07] = {`OR,   `R0, 5'd0, `R1};      // or  r0, r1
-        code['h08] = {`STS,  `R0, 8'hf2};          // sts 0xf2, r0
-        code['h09] = {`STOP,  3'h0, 8'h00};        // stop
+        CODE['h00] = {`LDI,  `R1, 8'h0f};          // ldi r1, 0x0f
+        CODE['h01] = {`LDS,  `R0, 8'hf8};          // lds r0, 0xf8
+        CODE['h02] = {`AND,  `R0, 5'd0, `R1};      // and r0, r1
+        CODE['h03] = {`STS,  `R0, 8'hf1};          // sts 0xf1, r0
+        CODE['h04] = {`LDI,  `R2, 8'hc3};          // ldi r2, 0xc3
+        CODE['h05] = {`EOR,  `R1, 5'd0, `R2};      // eor r1, r2
+        CODE['h06] = {`LDS,  `R0, 8'hf8};          // lds r0, 0xf8
+        CODE['h07] = {`OR,   `R0, 5'd0, `R1};      // or  r0, r1
+        CODE['h08] = {`STS,  `R0, 8'hf2};          // sts 0xf2, r0
+        CODE['h09] = {`STOP,  3'h0, 8'h00};        // stop
