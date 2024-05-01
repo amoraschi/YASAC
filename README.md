@@ -24,8 +24,7 @@ implements a subset of those and uses different instruction formats.
 
 ### Design stages
 
-The YASAC has been designed in cummulative stages. Each stage folder contains
-the state of the design at each stage.
+The YASAC has been designed in cummulative stages. To minimize hassle, this repository only contains the last stage refactored.
 
 #### Stage 1
 
@@ -67,6 +66,10 @@ Stack and subroutines.
 
 * Stack pointer.
 * Stack instructions: CALL, RET, PUSH, POP.
+
+### Stage 6
+
+* Moved testbench input port assignments to a different file
 
 ### YASAC core
 
