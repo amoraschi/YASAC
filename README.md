@@ -12,12 +12,12 @@ professors and students of the Department along the years.
 
 ### Introduction
 
-* 16 bit instructions.
-* 16 bit instructions memory (ROM 256x16).
-* 8 registers (R0, ..., R7).
-* 8 bit data memory (RAM 256x8)
-* 8 memory-mapped output ports (RAM 0xF0 to 0xF7).
-* 8 memory-mapped input ports (RAM 0xF8 to 0xFF).
+- 16 Bit Instructions.
+- 16 Bit Instructions Memory (ROM 256x16).
+- 8 Registers (R0, ..., R7).
+- 8 Bit Data Memory (RAM 256x8)
+- 8 Memory-Mapped OUT Ports (RAM 0xF0 to 0xF7).
+- 8 Memory-Mapped IN Ports (RAM 0xF8 to 0xFF).
 
 The YASAC borrows the instructions of the Atmel's AVR core but it only
 implements a subset of those and uses different instruction formats.
@@ -30,55 +30,58 @@ The YASAC has been designed in cummulative stages. To minimize hassle, this repo
 
 Minimal system.
 
-* Only code memory.
-* Basic ALU.
-* Instructions: LDI, MOV, ADD, SUB, STOP.
-* Basic I/O: R6 -> din, R7 -> dout
+- Only code memory.
+- Basic ALU.
+- Instructions: LDI, MOV, ADD, SUB, STOP.
+- Basic I/O: R6 -> din, R7 -> dout
 
 #### Stage 2
 
 Data memory and memory addressing. Memory-mapped I/O.
 
-* Data memory
-* Complete I/O: datamem[240-255] -> i/o ports 0-15
+- Data memory
+- Complete I/O: datamem[240-255] -> i/o ports 0-15
   - port00 to port07 (0xF0 to 0xF7): output
   - port08 to port15 (0xF8 to 0xFF): input
-* New instructions: STS, LDS, LD, ST
+- New instructions: STS, LDS, LD, ST
 
 #### Stage 3
 
 Improve ALU and jump instructions.
 
-* ALU with status outputs.
-* Status register.
-* Jump/branch instructions: JMP, BRBS, BRBC.
+- ALU with status outputs.
+- Status register.
+- Jump/branch instructions: JMP, BRBS, BRBC.
 
 #### Stage 4
 
 Improve processing instruction set.
 
-* Improve ALU with additional oprations.
-* New instructions: logic, shift and status register updates.
+- Improve ALU with additional oprations.
+- New instructions: logic, shift and status register updates.
 
 #### Stage 5
 
 Stack and subroutines.
 
-* Stack pointer.
-* Stack instructions: CALL, RET, PUSH, POP.
+- Stack pointer.
+- Stack instructions: CALL, RET, PUSH, POP.
 
-### Stage 6
+> [!NOTE]  
+> From this stage and onwards, new stages are personal additions to the base code.
+
+#### Stage 6
 
 Indirect addressing with displacement. (Exercise 19 - YASAC Assignment)
 
-* Moved testbench input port assignments to a different file
-* New instructions: LDD, STD
+- Moved testbench input port assignments to a different file
+- New instructions: LDD, STD
 
-### Stage 7
+#### Stage 7
 
 Register addressing on subroutines. (EdC 2nd Partial Exam 2022-2023)
 
-* New instructions: IJMP, ICALL.
+- New instructions: IJMP, ICALL.
 
 ### YASAC core
 
@@ -93,28 +96,31 @@ See the source code in the stages folders for additional examples.
 
 ### Improvement ideas
 
-#### Indirect addressing with displacement.
+#### ~~Indirect addressing with displacement.~~ (Done)
 
-* Data unit modifications.
-* New instructions: LDD, STD (may deprecate LD and ST).
+- ~~Data unit modifications~~.
+- ~~New instructions: LDD, STD (may deprecate LD and ST).~~
+
+> [!NOTE]  
+> These ideas are unlikely to be implemented since they need separate external hardware.
 
 #### Interrupts
 
-* Interruption lines and interruption register?
-* Define interruption vectors in the memory map.
-* Timer peripheral.
-* New instructions: RETI
+- Interruption lines and interruption register?
+- Define interruption vectors in the memory map.
+- Timer peripheral.
+- New instructions: RETI
 
 #### Input UART and bootloader
 
-* Serial port peripheral (UART).
-* Writable program memory.
-* ROM bootloader: transfer code from external computer.
+- Serial port peripheral (UART).
+- Writable program memory.
+- ROM bootloader: transfer code from external computer.
 
-### Original Authors
+### Original - Authors
 
-* Jorge Juan-Chico
-* David Guerrero Martos
+- Jorge Juan-Chico
+- David Guerrero Martos
 
 Based on the work of many others at the Departamento de Tecnología
 Electrónica, Universidad de Sevilla.
