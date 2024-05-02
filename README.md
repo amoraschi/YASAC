@@ -75,7 +75,7 @@ Stack and subroutines.
 Indirect addressing with displacement. (Exercise 19 - YASAC Assignment)
 
 - Moved testbench input port assignments to a different file
-- New instructions: LDD, STD
+- New instructions: LDD, STD (LD, ST are deprecated)
 
 #### Stage 7
 

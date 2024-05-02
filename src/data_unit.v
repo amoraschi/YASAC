@@ -68,7 +68,7 @@ module data_unit (
   wire [15:0] INSTRUCTION;          // Code Memory Instruction
   wire [2:0] SEL_A, SEL_B;          // Register Selection
   wire [7:0] INM_VALUE;             // Immediate Value
-  wire [5:0] DISP_VALUE;            // Displacement Value
+  wire [4:0] DISP_VALUE;            // Displacement Value
   wire [7:0] REG_A, REG_B;          // Register Array Outputs
   wire [7:0] ALU_A;                 // ALU A Input
   wire [7:0] ALU_B;                 // ALU B Input
