@@ -71,7 +71,7 @@ module test ();
   initial begin
     // OUT Generation
     $dumpfile("yasac_tb.vcd");
-    // $dumplimit(10000000);           // Limit 10MB
+    $dumplimit(10000000);           // Limit 10MB
     $dumpvars(0, test);
     //$dumpvars(0, uut.data_unit.data_mem.mem['hf1]);
 

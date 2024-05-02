@@ -1,5 +1,5 @@
-CODE['h00] = {`LDI, `R0, 8'hf8};
+CODE['h00] = {`LDI, `R0, 8'hf7};
 CODE['h01] = {`LDI, `R1, 8'hf1};
-CODE['h02] = {`LDD, `R2, 5'h00, `R0};
+CODE['h02] = {`LDD, `R2, 5'h01, `R0};
 CODE['h03] = {`STD, `R2, 5'h01, `R1};
 CODE['h04] = {`STOP, 11'h00};
