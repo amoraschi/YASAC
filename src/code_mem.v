@@ -24,7 +24,6 @@ module code_mem (
   output wire [15:0] DATA     // OUT: Data
 );
 
-  // Would put in uppercase, but breaking
   reg [15:0] CODE[0:255];
   integer I;
 
