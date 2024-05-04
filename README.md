@@ -79,13 +79,13 @@ Indirect addressing with displacement. (Exercise 19 - YASAC Assignment)
 
 #### Stage 7
 
-Register addressing on subroutines. (EdC 2nd Partial Exam 2022-2023)
+Register addressing on subroutines. (EDC 2nd Partial Exam 2022-2023)
 
 - New instructions: IJMP, ICALL.
 
 #### Stage 8
 
-Comparing instructions. (EdC 2nd Partial Exam 2023-2024)
+Comparing instructions. (EDC 2nd Partial Exam 2023-2024)
 
 - New instructions: CP, CPI, CPSE
 
