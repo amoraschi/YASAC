@@ -33,6 +33,9 @@
 `define RET     5'h17
 `define IJMP    5'h18
 `define ICALL   5'h19
+`define CP      5'h1a
+`define CPI     5'h1b
+`define CPSE    5'h1c
 
 // Registers
 `define R0      3'h0

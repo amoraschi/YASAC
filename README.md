@@ -83,6 +83,12 @@ Register addressing on subroutines. (EdC 2nd Partial Exam 2022-2023)
 
 - New instructions: IJMP, ICALL.
 
+#### Stage 8
+
+Comparing instructions. (EdC 2nd Partial Exam 2023-2024)
+
+- New instructions: CP, CPI, CPSE
+
 ### YASAC core
 
 File `yasac.v` contains the YASAC core. This is the processor and memories and

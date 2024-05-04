@@ -40,8 +40,9 @@ module code_mem (
     // `include "src/code/logic_test.code"
     // `include "src/code/shift_cl_se_test.code"
     // `include "src/code/stack_test.code"
-    `include "src/code/displacement_test.code"
+    // `include "src/code/displacement_test.code"
     // `include "src/code/register_call_test.code"
     // `include "src/code/register_jmp_test.code"
+    `include "src/code/cpse_test.code"
   end
 endmodule

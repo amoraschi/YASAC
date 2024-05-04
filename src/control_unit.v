@@ -86,17 +86,17 @@ module control_unit (
               NEXT_STATE = READY;
             `LDI, `MOV, `ADD, `SUB, `JMP, `BRBS, `BRBC,
             `AND, `OR, `EOR, `ROR, `ROL, `BCLR, `BSET,
-            `IJMP:
+            `IJMP, `CP, `CPI:
               NEXT_STATE = FETCH;
             `LDS, `STS, `PUSH, `POP, `CALL, `RET, `LDD,
-            `STD, `ICALL:
+            `STD, `ICALL, `CPSE:
               NEXT_STATE = EXEC2;
             default:
               NEXT_STATE = 'bx;
           endcase
         EXEC2:
           case (OPCODE)
-            `LDS, `STS, `PUSH, `LDD, `STD:
+            `LDS, `STS, `PUSH, `LDD, `STD, `CPSE:
               NEXT_STATE = FETCH;
             `POP, `CALL, `RET, `ICALL:
               NEXT_STATE = EXEC3;
@@ -232,6 +232,13 @@ module control_unit (
               WRITE_MEMADDR = 1'b1;
               DEC_STACKPTR = 1'b1;
             end
+            `CP, `CPI, `CPSE: begin
+              ALU_OPERATION = `ALU_SUB;
+              WRITE_STATREG = 1'b1;
+
+              if (OPCODE == `CPI)
+                USE_IMMEDIATE = 1'b1;
+            end
           endcase
       EXEC2:
         case (OPCODE)
@@ -254,6 +261,10 @@ module control_unit (
           `ICALL: begin
             READ_PROGCOUNT = 1'b1;
             WRITE_MEM = 1'b1;
+          end
+          `CPSE: begin
+              if (STATUS[`ZF] == 1'b1)
+                INC_PROGCOUNT = 1'b1;
           end
         endcase
       EXEC3:

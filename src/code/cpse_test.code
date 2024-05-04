@@ -1,0 +1,6 @@
+CODE['h00] = {`LDS, `R1, 8'hf8}; // Read Port 08
+CODE['h01] = {`LDI, `R2, 8'ha5};
+CODE['h02] = {`CPSE, `R1, 5'h00, `R2}; // Compare R1 against 0xA5
+CODE['h03] = {`LDI, `R2, 8'h00}; // Set OUT to 0x00 if different
+CODE['h04] = {`STS, `R2, 8'hf1}; // OUT Result to Port 01
+CODE['h05] = {`STOP, 11'h00};
